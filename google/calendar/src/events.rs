@@ -69,6 +69,7 @@ impl Events {
         time_min: &str,
         time_zone: &str,
         updated_min: &str,
+        sync_token: &str,
     ) -> Result<crate::types::Events> {
         let mut query_args: Vec<(String, String)> = Default::default();
         if !i_cal_uid.is_empty() {
@@ -124,6 +125,9 @@ impl Events {
         }
         if !updated_min.is_empty() {
             query_args.push(("updatedMin".to_string(), updated_min.to_string()));
+        }
+        if !sync_token.is_empty() {
+            query_args.push(("syncToken".to_string(), sync_token.to_string()));
         }
         let query_ = serde_urlencoded::to_string(&query_args).unwrap();
         let url = format!(
