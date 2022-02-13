@@ -69,7 +69,7 @@ impl Events {
         time_min: &str,
         time_zone: &str,
         updated_min: &str,
-    ) -> Result<Vec<crate::types::Event>> {
+    ) -> Result<crate::types::Events> {
         let mut query_args: Vec<(String, String)> = Default::default();
         if !i_cal_uid.is_empty() {
             query_args.push(("iCalUID".to_string(), i_cal_uid.to_string()));
@@ -135,7 +135,7 @@ impl Events {
         let resp: crate::types::Events = self.client.get(&url, None).await?;
 
         // Return our response data.
-        Ok(resp.items)
+        Ok(resp)
     }
 
     /**
