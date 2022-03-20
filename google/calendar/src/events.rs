@@ -165,7 +165,7 @@ impl Events {
         time_min: &str,
         time_zone: &str,
         updated_min: &str,
-    ) -> Result<Vec<crate::types::Event>> {
+    ) -> Result<crate::types::Events> {
         let mut query_args: Vec<(String, String)> = Default::default();
         if !i_cal_uid.is_empty() {
             query_args.push(("iCalUID".to_string(), i_cal_uid.to_string()));
@@ -225,7 +225,7 @@ impl Events {
         let mut resp: crate::types::Events = self.client.get(&url, None).await?;
 
         let mut items = resp.items;
-        let mut page = resp.next_page_token;
+        let mut page = resp.next_page_token.clone();
 
         // Paginate if we should.
         while !page.is_empty() {
@@ -249,9 +249,10 @@ impl Events {
                 page = "".to_string();
             }
         }
+        resp.items = items;
 
         // Return our response data.
-        Ok(items)
+        Ok(resp)
     }
 
     /**
