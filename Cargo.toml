@@ -19,6 +19,5 @@ members = [
 	"shipbob",
 	"shopify",
 	"slack",
-	"tripactions",
-	"zoom"
+	"tripactions"
 ]
