@@ -2300,7 +2300,6 @@ dependencies = [
  "chrono",
  "dirs",
  "http",
- "hyperx",
  "jsonwebtoken",
  "log",
  "mime",
