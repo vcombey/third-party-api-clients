@@ -135,6 +135,7 @@ impl Events {
             crate::progenitor_support::encode_path(&calendar_id.to_string()),
             query_
         );
+        dbg!(&url);
 
         let resp: crate::types::Events = self.client.get(&url, None).await?;
 

@@ -461,7 +461,7 @@ impl Client {
         let response_body = response.bytes().await?;
 
         if status.is_success() {
-            log::debug!(
+            dbg!(
                 "response payload {}",
                 String::from_utf8_lossy(&response_body)
             );
