@@ -352,6 +352,12 @@ impl Client {
             .send()
             .await?;
 
+        if !resp.status().is_success() {
+            tracing::error!("get_access_token error: {:?}", resp.status());
+            let text = resp.text().await?;
+            tracing::error!("get_access_token error: {:?}", text);
+            return Err(anyhow!("An get access_token error occured: {}", text));
+        }
         // Unwrap the response.
         let t: AccessToken = resp.json().await?;
 
@@ -388,6 +394,13 @@ impl Client {
             .await?;
 
         // Unwrap the response.
+
+        if !resp.status().is_success() {
+            tracing::error!("get_access_token error: {:?}", resp.status());
+            let text = resp.text().await?;
+            tracing::error!("get_access_token error: {:?}", text);
+            return Err(anyhow!("An get access_token error occured: {}", text));
+        }
         let t: AccessToken = resp.json().await?;
 
         self.token = t.access_token.to_string();
