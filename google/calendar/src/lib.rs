@@ -474,10 +474,6 @@ impl Client {
         let response_body = response.bytes().await?;
 
         if status.is_success() {
-            dbg!(
-                "response payload {}",
-                String::from_utf8_lossy(&response_body)
-            );
             let parsed_response = if status == http::StatusCode::NO_CONTENT
                 || std::any::TypeId::of::<Out>() == std::any::TypeId::of::<()>()
             {
