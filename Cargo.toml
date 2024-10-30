@@ -1,23 +1,4 @@
 [workspace]
 members = [
-	"docusign",
-	"generator",
-	"giphy",
-	"github",
-	"google/admin",
 	"google/calendar",
-	"google/cloud-resource-manager",
-	"google/drive",
-	"google/groups-settings",
-	"google/sheets",
-	"gusto",
-	"mailchimp",
-	"okta",
-	"ramp",
-	"rev.ai",
-	"sendgrid",
-	"shipbob",
-	"shopify",
-	"slack",
-	"tripactions"
 ]
